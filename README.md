@@ -72,7 +72,7 @@ The operational dashboard focuses on quick prioritization.
 - Ranking of products with the lowest coverage
 - Operational priority queue with product, category, brand, current stock, average daily sales, coverage days, and status
 
-![StockGuard Dashboard](screenshots/01-stockguard-dashboard.png)
+![StockGuard Dashboard](screenshots/screenshots/01-stockguard-dashboard.png)
 
 ## From analytics to action
 
@@ -80,7 +80,7 @@ The differentiator of the project is that the process does not stop at the dashb
 
 Products classified as **Attention** remain visible for analyst monitoring. Products classified as **Critical** can trigger a Qlik Automation workflow that retrieves the relevant table data and sends a consolidated purchase-request e-mail to the buyer.
 
-![Qlik Automation Flow](screenshots/03-qlik-automation-flow.png)
+![Qlik Automation Flow](screenshots/screenshots/03-qlik-automation-flow.png)
 
 ### Automated purchase request
 
@@ -95,7 +95,7 @@ The e-mail consolidates the critical products into a single communication and in
 - Coverage in days
 - Status
 
-![Purchase Request Email](screenshots/02-purchase-request-email.png)
+![Purchase Request Email](screenshots/screenshots/02-purchase-request-email.png)
 
 The HTML template used for this message is documented in [`automation/purchase-request-email.html`](automation/purchase-request-email.html).
 
@@ -243,9 +243,10 @@ Potential next steps include:
 │   └── README.md
 └── screenshots/
     ├── README.md
-    ├── 01-stockguard-dashboard.png
-    ├── 02-purchase-request-email.png
-    └── 03-qlik-automation-flow.png
+    └── screenshots/
+        ├── 01-stockguard-dashboard.png
+        ├── 02-purchase-request-email.png
+        └── 03-qlik-automation-flow.png
 ```
 
 ---
