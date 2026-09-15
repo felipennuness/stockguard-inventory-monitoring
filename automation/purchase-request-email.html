@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<style>
+body{margin:0;padding:30px;background:#e8eaed;font-family:Arial,Helvetica,sans-serif;}
+.container{width:95%;max-width:1400px;margin:auto;background:#ffffff;border-radius:10px;overflow:hidden;box-shadow:0 5px 15px rgba(0,0,0,.12);}
+.header{background:#0b1c38;color:#ffffff;padding:18px 28px;}
+.header h1{margin:0;font-size:24px;font-weight:600;}
+.header p{margin-top:4px;font-size:13px;color:#c7d0df;}
+.content{padding:30px;color:#333333;font-size:14px;line-height:1.6;}
+.title{font-size:26px;color:#0b1c38;font-weight:bold;margin-bottom:15px;}
+.summary{background:#f5f7fa;border:1px solid #d8dee8;border-radius:8px;padding:18px;margin-bottom:25px;}
+.summary table{width:100%;}
+.summary td{border:none;padding:6px 0;font-size:14px;}
+.alert{background:#FFF4D6;border-left:6px solid #F5B301;padding:16px;border-radius:6px;margin:25px 0;}
+.table-responsive{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;}
+th{background:#0b1c38;color:#ffffff;padding:12px;font-size:13px;text-align:left;}
+td{padding:12px;border-bottom:1px solid #e5e5e5;font-size:13px;}
+tr:nth-child(even){background:#fafafa;}
+.status{display:inline-block;background:#D32F2F;color:#ffffff;padding:5px 10px;border-radius:15px;font-size:12px;font-weight:bold;}
+.footer{background:#0b1c38;color:#ffffff;text-align:center;padding:18px;margin-top:30px;font-size:13px;}
+.footer strong{font-size:15px;}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>StockGuard</h1>
+    <p>Monitor Inteligente de Estoque</p>
+  </div>
+
+  <div class="content">
+    <div class="title">📦 Solicitação de Compra</div>
+
+    <div class="summary">
+      <table>
+        <tr><td><strong>Data da Análise</strong></td><td>17/07/2026</td></tr>
+        <tr><td><strong>Produtos Críticos Encontrados</strong></td><td>3</td></tr>
+        <tr><td><strong>Sistema</strong></td><td>StockGuard</td></tr>
+      </table>
+    </div>
+
+    <p>Olá,</p>
+
+    <p>
+      O monitoramento automático do <strong>StockGuard</strong> identificou produtos classificados como <strong>Crítico</strong>, indicando risco de ruptura de estoque. Solicitamos a avaliação para reposição dos itens abaixo.
+    </p>
+
+    <div class="alert">
+      <strong>⚠ Atenção:</strong> Foram identificados produtos com cobertura inferior ao limite definido pela operação.
+    </div>
+
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th><th>Produto</th><th>Categoria</th><th>Marca</th><th>Estoque Atual</th><th>Média Venda/Dia</th><th>Cobertura</th><th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{ $.GetStraightTableData[0].id_produto }</td>
+            <td>{ $.GetStraightTableData[0].nome }</td>
+            <td>{ $.GetStraightTableData[0].categoria }</td>
+            <td>{ $.GetStraightTableData[0].marca }</td>
+            <td>{ $.GetStraightTableData[0].quantidade_atual }</td>
+            <td>{ $.GetStraightTableData[0].media_venda_diaria }</td>
+            <td>{ $.GetStraightTableData[0].cobertura_dias }</td>
+            <td><span class="status">Critico</span></td>
+          </tr>
+          <tr>
+            <td>{ $.GetStraightTableData[1].id_produto }</td>
+            <td>{ $.GetStraightTableData[1].nome }</td>
+            <td>{ $.GetStraightTableData[1].categoria }</td>
+            <td>{ $.GetStraightTableData[1].marca }</td>
+            <td>{ $.GetStraightTableData[1].quantidade_atual }</td>
+            <td>{ $.GetStraightTableData[1].media_venda_diaria }</td>
+            <td>{ $.GetStraightTableData[1].cobertura_dias }</td>
+            <td><span class="status">Critico</span></td>
+          </tr>
+          <tr>
+            <td>{ $.GetStraightTableData[2].id_produto }</td>
+            <td>{ $.GetStraightTableData[2].nome }</td>
+            <td>{ $.GetStraightTableData[2].categoria }</td>
+            <td>{ $.GetStraightTableData[2].marca }</td>
+            <td>{ $.GetStraightTableData[2].quantidade_atual }</td>
+            <td>{ $.GetStraightTableData[2].media_venda_diaria }</td>
+            <td>{ $.GetStraightTableData[2].cobertura_dias }</td>
+            <td><span class="status">Critico</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="footer">
+    <strong>StockGuard © 2026</strong><br><br>
+    Inteligência em Estoque • Visibilidade • Automação • Decisão
+  </div>
+</div>
+</body>
+</html>
