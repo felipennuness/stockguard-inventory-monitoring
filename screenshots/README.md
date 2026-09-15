@@ -4,8 +4,6 @@ This folder contains the selected public evidence for the StockGuard portfolio c
 
 ## 1. Inventory monitoring dashboard
 
-`01-stockguard-dashboard.png`
-
 Shows the operational Qlik dashboard with:
 
 - products monitored;
@@ -14,19 +12,21 @@ Shows the operational Qlik dashboard with:
 - lowest-coverage ranking;
 - operational product table.
 
-## 2. Automated purchase-request e-mail
+![Inventory Monitoring Dashboard](screenshots/01-stockguard-dashboard.png)
 
-`02-purchase-request-email.png`
+## 2. Automated purchase-request e-mail
 
 Shows the HTML e-mail generated for products classified as critical.
 
 The message consolidates critical items and presents the main replenishment information required by the buyer.
 
+![Automated Purchase Request](screenshots/02-purchase-request-email.png)
+
 ## 3. Qlik Automation workflow
 
-`03-qlik-automation-flow.png`
-
 Shows the automation workflow that retrieves the relevant Qlik data and executes the e-mail action.
+
+![Qlik Automation Workflow](screenshots/03-qlik-automation-flow.png)
 
 ## Data policy
 
