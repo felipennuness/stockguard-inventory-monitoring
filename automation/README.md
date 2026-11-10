@@ -1,67 +1,67 @@
 # Qlik Automation
 
-## Purpose
+## Objetivo
 
-The automation layer turns a critical inventory condition into an operational action.
+A camada de automação transforma uma condição crítica de estoque em uma ação operacional.
 
-The project intentionally treats **Attention** and **Critical** products differently:
+O projeto trata intencionalmente produtos em situação de **Atenção** e **Crítico** de maneiras diferentes:
 
-- **Attention** products remain available for analyst follow-up;
-- **Critical** products can trigger an automated purchase-request flow.
+- produtos em **Atenção** permanecem disponíveis para acompanhamento do analista;
+- produtos **Críticos** podem acionar um fluxo automatizado de solicitação de compra.
 
-## Workflow
+## Fluxo de trabalho
 
 ```text
-Critical product identified
+Produto crítico identificado
         |
         v
 Qlik Automation
         |
         v
-Select relevant field values
+Selecionar valores de campos relevantes
         |
         v
-Create bookmark / context
+Criar marcador / contexto
         |
         v
-Retrieve table data
+Recuperar dados da tabela
         |
         v
-Build HTML message
+Montar mensagem HTML
         |
         v
-Send e-mail
+Enviar e-mail
         |
         v
-Buyer
+Comprador
 ```
 
-## Data included in the e-mail
+## Dados incluídos no e-mail
 
-The generated purchase request includes:
+A solicitação de compra gerada inclui:
 
-- Product ID
-- Product name
-- Category
-- Brand
-- Current stock
-- Average daily sales
-- Coverage in days
-- Product status
+- ID do produto
+- Nome do produto
+- Categoria
+- Marca
+- Estoque atual
+- Média diária de vendas
+- Cobertura em dias
+- Status do produto
 
-Critical products are consolidated into one communication rather than generating one separate e-mail per item.
+Os produtos críticos são consolidados em uma única comunicação, em vez de gerar um e-mail separado para cada item.
 
-## HTML template
+## Modelo HTML
 
-The e-mail uses a custom HTML/CSS layout aligned with the StockGuard visual identity.
+O e-mail utiliza um layout personalizado em HTML / CSS, alinhado à identidade visual do StockGuard.
 
-See [`purchase-request-email.html`](purchase-request-email.html).
+Consulte [purchase-request-email.html](purchase-request-email.html).
 
-## Evidence
+## Evidências
 
-The public portfolio includes screenshots of:
+O portfólio público inclui capturas de tela de:
 
-- the Qlik Automation workflow;
-- the resulting purchase-request e-mail.
+- fluxo do Qlik Automation;
+- e-mail de solicitação de compra resultante.
 
-These screenshots use demonstration data only.
+Essas capturas utilizam apenas dados de demonstração.
