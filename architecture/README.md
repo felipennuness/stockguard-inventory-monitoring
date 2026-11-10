@@ -1,12 +1,12 @@
-# Architecture
+# Arquitetura
 
-## Overview
+## Visão geral
 
-StockGuard combines a small relational data layer, Qlik Cloud analytics, and an automation layer for operational action.
+O StockGuard combina uma pequena camada relacional de dados, analytics no Qlik Cloud e uma camada de automação para execução de ações operacionais.
 
-The first portfolio version uses a local MySQL database for generation, storage, and validation of the demonstration data.
+A primeira versão do portfólio utiliza um banco de dados MySQL local para geração, armazenamento e validação dos dados de demonstração.
 
-## Current portfolio flow
+## Fluxo atual do portfólio
 
 ```mermaid
 flowchart TD
@@ -14,13 +14,13 @@ flowchart TD
     B[produto]
     C[estoque]
     D[venda_diaria]
-    E[Prepared / Exported Data]
+    E[Dados Preparados / Exportados]
     F[Qlik Cloud]
-    G[Inventory Monitoring Dashboard]
+    G[Dashboard de Monitoramento de Estoque]
     H[Qlik Automation]
-    I[HTML Purchase Request]
-    J[Analyst]
-    K[Buyer]
+    I[Solicitação de Compra em HTML]
+    J[Analista]
+    K[Comprador]
 
     A --> B
     A --> C
@@ -36,45 +36,45 @@ flowchart TD
     I --> K
 ```
 
-## Data layer
+## Camada de dados
 
-The database contains three primary tables:
+O banco contém três tabelas principais:
 
-- `produto` — product registration and descriptive attributes;
-- `estoque` — current inventory position and minimum stock;
-- `venda_diaria` — daily sales history used to calculate average consumption.
+- `produto` — cadastro de produtos e atributos descritivos;
+- `estoque` — posição atual do estoque e estoque mínimo;
+- `venda_diaria` — histórico diário de vendas utilizado para calcular o consumo médio.
 
-## Analytical layer
+## Camada analítica
 
-Qlik Cloud uses the prepared data to calculate and present:
+O Qlik Cloud utiliza os dados preparados para calcular e apresentar:
 
-- current stock;
-- average daily sales;
-- stock coverage in days;
-- risk classification;
-- status distribution;
-- lowest-coverage ranking;
-- operational priority queue.
+- estoque atual;
+- média diária de vendas;
+- cobertura de estoque em dias;
+- classificação de risco;
+- distribuição por status;
+- ranking de menor cobertura;
+- fila de prioridades operacionais.
 
-## Action layer
+## Camada de ação
 
-The project separates two types of operational response:
+O projeto separa dois tipos de resposta operacional:
 
-- **Attention** — remains visible for analyst monitoring;
-- **Critical** — can trigger Qlik Automation and generate a purchase-request e-mail.
+- **Atenção** — permanece visível para acompanhamento do analista;
+- **Crítico** — pode acionar o Qlik Automation e gerar um e-mail de solicitação de compra.
 
-## Connectivity note
+## Observação sobre conectividade
 
-The MySQL instance is hosted locally in this portfolio version and is not presented as a live direct Qlik Cloud connection.
+A instância MySQL está hospedada localmente nesta versão do portfólio e não é apresentada como uma conexão direta e ativa com o Qlik Cloud.
 
-The portfolio flow can use exported data for ingestion into Qlik Cloud. A future evolution is to use **Qlik Data Gateway — Direct Access** for controlled connectivity between the local environment and Qlik Cloud.
+O fluxo do portfólio pode utilizar dados exportados para ingestão no Qlik Cloud. Uma evolução futura é utilizar o **Qlik Data Gateway — Direct Access** para conectividade controlada entre o ambiente local e o Qlik Cloud.
 
-## Design principle
+## Princípio de design
 
-The solution is intentionally designed around the progression:
+A solução foi intencionalmente estruturada em torno da sequência:
 
 ```text
-Data -> Information -> Insight -> Alert -> Action
+Dados -> Informação -> Insight -> Alerta -> Ação
 ```
 
-This keeps the project focused on operational decision support rather than visualization alone.
+Isso mantém o foco do projeto no apoio à decisão operacional, e não apenas na visualização.
