@@ -1,121 +1,121 @@
-# StockGuard — Intelligent Inventory Monitoring
+# StockGuard — Monitoramento Inteligente de Estoque
 
-![Status](https://img.shields.io/badge/status-portfolio%20case-success)
+![Status](https://img.shields.io/badge/status-estudo%20de%20portf%C3%B3lio-success)
 ![Qlik](https://img.shields.io/badge/Qlik-Cloud%20%7C%20Sense-009845)
 ![Automation](https://img.shields.io/badge/Qlik-Automation-009845)
-![MySQL](https://img.shields.io/badge/MySQL-Validation-4479A1)
-![Python](https://img.shields.io/badge/Python-Demo%20Data-3776AB)
+![MySQL](https://img.shields.io/badge/MySQL-Valida%C3%A7%C3%A3o-4479A1)
+![Python](https://img.shields.io/badge/Python-Dados%20de%20Demonstra%C3%A7%C3%A3o-3776AB)
 
-> Portfolio project built with fictional demonstration data to show how operational inventory data can be transformed into monitoring, prioritization, and automated action.
+> Projeto de portfólio desenvolvido com dados fictícios para demonstrar como dados operacionais de estoque podem ser transformados em monitoramento, priorização e ações automatizadas.
 
-## Overview
+## Visão geral
 
-**StockGuard** is an inventory monitoring solution developed in **Qlik Cloud**. The project goes beyond showing current stock levels: it estimates stock coverage in days, classifies each product by risk level, and connects critical conditions to an automated purchase-request workflow.
+O **StockGuard** é uma solução de monitoramento de estoque desenvolvida no **Qlik Cloud**. O projeto vai além da exibição dos níveis atuais de estoque: estima a cobertura em dias, classifica cada produto por nível de risco e conecta situações críticas a um fluxo automatizado de solicitação de compra.
 
-The core idea is simple:
-
-```text
-Sales + Inventory Data
-        |
-        v
-Stock Coverage Calculation
-        |
-        v
-Risk Classification
-        |
-        v
-Qlik Dashboard
-        |
-        +--> Attention -> Analyst monitoring
-        |
-        +--> Critical -> Qlik Automation -> Purchase Request E-mail
-```
-
-## Business problem
-
-Looking only at available quantity can be misleading. A product with 300 units in stock may look safe, but if it sells 100 units per day, it only has three days of coverage.
-
-StockGuard therefore uses the relationship between current stock and average daily sales to identify replenishment risk earlier.
-
-## Main business rule
-
-The main metric is:
+A ideia central é simples:
 
 ```text
-Stock Coverage (days) = Current Stock / Average Daily Sales
+Dados de Vendas + Estoque
+        |
+        v
+Cálculo de Cobertura de Estoque
+        |
+        v
+Classificação de Risco
+        |
+        v
+Dashboard Qlik
+        |
+        +--> Atenção -> Acompanhamento do analista
+        |
+        +--> Crítico -> Qlik Automation -> E-mail de Solicitação de Compra
 ```
 
-The demonstration thresholds are:
+## Problema de negócio
 
-| Status | Coverage rule | Meaning | Action |
+Observar apenas a quantidade disponível pode levar a conclusões equivocadas. Um produto com 300 unidades em estoque pode parecer seguro, mas, se vende 100 unidades por dia, possui apenas três dias de cobertura.
+
+Por isso, o StockGuard utiliza a relação entre o estoque atual e a média diária de vendas para identificar antecipadamente o risco de reposição.
+
+## Principal regra de negócio
+
+A métrica principal é:
+
+```text
+Cobertura de Estoque (dias) = Estoque Atual / Média Diária de Vendas
+```
+
+Os limites utilizados na demonstração são:
+
+| Status | Regra de cobertura | Significado | Ação |
 |---|---:|---|---|
-| 🟢 Healthy | > 7 days | Comfortable stock level | Normal monitoring |
-| 🟡 Attention | > 3 and <= 7 days | Preventive risk | Analyst follow-up |
-| 🔴 Critical | <= 3 days | High stockout risk | Automated purchase request |
+| 🟢 Saudável | > 7 dias | Nível confortável de estoque | Monitoramento normal |
+| 🟡 Atenção | > 3 e <= 7 dias | Risco preventivo | Acompanhamento do analista |
+| 🔴 Crítico | <= 3 dias | Alto risco de ruptura | Solicitação automatizada de compra |
 
-The thresholds are demonstration rules and can be parameterized for a real operational policy.
+Os limites são regras de demonstração e podem ser parametrizados de acordo com uma política operacional real.
 
 ## Dashboard
 
-The operational dashboard focuses on quick prioritization.
+O dashboard operacional foi pensado para facilitar a priorização.
 
-### Main indicators
+### Principais indicadores
 
-- Products monitored
-- Healthy products
-- Products requiring attention
-- Critical products
+- Produtos monitorados
+- Produtos em situação saudável
+- Produtos que exigem atenção
+- Produtos em situação crítica
 
-### Main analyses
+### Principais análises
 
-- Inventory-status distribution
-- Ranking of products with the lowest coverage
-- Operational priority queue with product, category, brand, current stock, average daily sales, coverage days, and status
+- Distribuição dos produtos por status de estoque
+- Ranking dos produtos com menor cobertura
+- Fila de prioridades com produto, categoria, marca, estoque atual, média diária de vendas, dias de cobertura e status
 
-![StockGuard Dashboard](screenshots/screenshots/01-stockguard-dashboard.png)
+![Dashboard StockGuard](screenshots/screenshots/01-stockguard-dashboard.png)
 
-## From analytics to action
+## Da análise à ação
 
-The differentiator of the project is that the process does not stop at the dashboard.
+O diferencial do projeto é que o processo não termina no dashboard.
 
-Products classified as **Attention** remain visible for analyst monitoring. Products classified as **Critical** can trigger a Qlik Automation workflow that retrieves the relevant table data and sends a consolidated purchase-request e-mail to the buyer.
+Produtos classificados como **Atenção** permanecem visíveis para acompanhamento do analista. Produtos classificados como **Crítico** podem acionar um fluxo do Qlik Automation, que recupera os dados relevantes da tabela e envia ao comprador um e-mail consolidado de solicitação de compra.
 
-![Qlik Automation Flow](screenshots/screenshots/03-qlik-automation-flow.png)
+![Fluxo do Qlik Automation](screenshots/screenshots/03-qlik-automation-flow.png)
 
-### Automated purchase request
+### Solicitação de compra automatizada
 
-The e-mail consolidates the critical products into a single communication and includes information such as:
+O e-mail reúne os produtos críticos em uma única comunicação e inclui informações como:
 
-- Product ID
-- Product name
-- Category
-- Brand
-- Current stock
-- Average daily sales
-- Coverage in days
+- ID do produto
+- Nome do produto
+- Categoria
+- Marca
+- Estoque atual
+- Média diária de vendas
+- Cobertura em dias
 - Status
 
-![Purchase Request Email](screenshots/screenshots/02-purchase-request-email.png)
+![E-mail de Solicitação de Compra](screenshots/screenshots/02-purchase-request-email.png)
 
-The HTML template used for this message is documented in [`automation/purchase-request-email.html`](automation/purchase-request-email.html).
+O modelo HTML utilizado nessa mensagem está documentado em [automation/purchase-request-email.html](automation/purchase-request-email.html).
 
-## Data architecture
+## Arquitetura de dados
 
-The first version uses a local **MySQL** database for generation, storage, and validation of the demonstration data.
+A primeira versão utiliza um banco de dados **MySQL** local para geração, armazenamento e validação dos dados de demonstração.
 
 ```mermaid
 flowchart TD
     A[(MySQL)]
-    B[Product]
-    C[Inventory]
-    D[Daily Sales]
-    E[CSV Export / Prepared Data]
+    B[Produto]
+    C[Estoque]
+    D[Vendas Diárias]
+    E[Exportação CSV / Dados Preparados]
     F[Qlik Cloud]
-    G[Inventory Monitoring Dashboard]
+    G[Dashboard de Monitoramento de Estoque]
     H[Qlik Automation]
-    I[HTML Purchase Request]
-    J[Analyst]
-    K[Buyer]
+    I[E-mail HTML de Solicitação de Compra]
+    J[Analista]
+    K[Comprador]
 
     A --> B
     A --> C
@@ -131,105 +131,105 @@ flowchart TD
     I --> K
 ```
 
-Because the MySQL instance is local, this portfolio version does not claim a direct live MySQL-to-Qlik Cloud connection. The current portfolio flow can use exported files for Qlik Cloud ingestion. A future evolution is **Qlik Data Gateway — Direct Access**.
+Como a instância MySQL é local, esta versão do portfólio não afirma possuir uma conexão direta e ativa entre MySQL e Qlik Cloud. O fluxo atual do portfólio pode utilizar arquivos exportados para a ingestão no Qlik Cloud. Uma possível evolução é o **Qlik Data Gateway — Direct Access**.
 
-See [Architecture](architecture/README.md).
+Consulte [Arquitetura](architecture/README.md).
 
-## Relational model
+## Modelo relacional
 
-The demonstration database contains three main tables:
+O banco de demonstração contém três tabelas principais:
 
-- `produto` — product master data
-- `venda_diaria` — daily sales history
-- `estoque` — current inventory position
+- `produto` — cadastro de produtos
+- `venda_diaria` — histórico diário de vendas
+- `estoque` — posição atual do estoque
 
-The stock-coverage rule was validated in MySQL before being implemented in the analytical layer.
+A regra de cobertura de estoque foi validada no MySQL antes de ser implementada na camada analítica.
 
-See [SQL Validation](sql/README.md).
+Consulte [Validação SQL](sql/README.md).
 
-## Automation
+## Automação
 
-The automation flow represents the action layer of the project:
+O fluxo de automação representa a camada de ação do projeto:
 
 ```text
-Critical product identified
+Produto crítico identificado
         |
         v
 Qlik Automation
         |
         v
-Retrieve product information
+Recuperar informações do produto
         |
         v
-Build HTML message
+Montar mensagem HTML
         |
         v
-Send e-mail
+Enviar e-mail
         |
         v
-Buyer
+Comprador
 ```
 
-See [Automation](automation/README.md).
+Consulte [Automação](automation/README.md).
 
-## Technologies
+## Tecnologias
 
-| Layer | Technology |
+| Camada | Tecnologia |
 |---|---|
-| Demo data generation / export | Python |
-| Relational storage and validation | MySQL |
+| Geração / exportação de dados de demonstração | Python |
+| Armazenamento relacional e validação | MySQL |
 | Analytics | Qlik Cloud / Qlik Sense |
-| Business logic | Qlik expressions and metrics |
-| Automation | Qlik Automation |
-| Notification layout | HTML / CSS |
+| Lógica de negócio | Expressões e métricas Qlik |
+| Automação | Qlik Automation |
+| Layout das notificações | HTML / CSS |
 
-## Demonstration dataset
+## Conjunto de dados de demonstração
 
-The portfolio dataset is fictional and was created specifically for the project. It includes:
+O conjunto de dados do portfólio é fictício e foi criado especificamente para o projeto. Ele inclui:
 
-- 30 products
-- 30 days of sales history per product
-- Current stock by product
-- Minimum stock by product
+- 30 produtos
+- 30 dias de histórico de vendas por produto
+- Estoque atual por produto
+- Estoque mínimo por produto
 
-## Why this project matters
+## Por que este projeto é relevante
 
-StockGuard was designed to demonstrate that BI does not have to end at visualization.
+O StockGuard foi desenvolvido para demonstrar que Business Intelligence não precisa terminar na visualização.
 
 ```text
-Data
+Dados
   |
   v
-Information
+Informação
   |
   v
 Insight
   |
   v
-Alert
+Alerta
   |
   v
-Action
+Ação
 ```
 
-The project combines **data modeling, SQL validation, Qlik analytics, business rules, operational prioritization, and automation** in one small end-to-end use case.
+O projeto combina **modelagem de dados, validação SQL, analytics Qlik, regras de negócio, priorização operacional e automação** em um pequeno caso de uso de ponta a ponta.
 
-## Future improvements
+## Melhorias futuras
 
-Potential next steps include:
+Possíveis próximos passos incluem:
 
-- Qlik Data Gateway direct connectivity
-- Parameterized coverage thresholds
-- Buyer assignment by product category
-- Alert history
-- Purchase-order tracking
-- Demand forecasting
-- Supplier lead-time analysis
-- Automated replenishment quantity suggestion
-- Stockout-avoidance monitoring
-- Automation-efficiency KPIs
+- Conectividade direta com Qlik Data Gateway
+- Limites parametrizados de cobertura
+- Atribuição de compradores por categoria de produto
+- Histórico de alertas
+- Acompanhamento de pedidos de compra
+- Previsão de demanda
+- Análise do prazo de entrega dos fornecedores
+- Sugestão automatizada de quantidade para reposição
+- Monitoramento de prevenção de ruptura
+- KPIs de eficiência da automação
 
-## Repository structure
+## Estrutura do repositório
 
 ```text
 .
@@ -251,4 +251,4 @@ Potential next steps include:
 
 ---
 
-**Portfolio project by Luiz Felipe Nunes — BI Developer | Qlik | SQL | Data Analytics**
+**Projeto de portfólio de Luiz Felipe Nunes — Desenvolvedor de BI | Qlik | SQL | Análise de Dados**
