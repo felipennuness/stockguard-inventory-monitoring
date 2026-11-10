@@ -1,10 +1,10 @@
-# SQL Validation
+# Validação SQL
 
-## Purpose
+## Objetivo
 
-Before implementing the inventory-coverage rule in Qlik, the logic was validated in MySQL.
+Antes de implementar a regra de cobertura de estoque no Qlik, a lógica foi validada no MySQL.
 
-The demonstration model uses three tables:
+O modelo de demonstração utiliza três tabelas:
 
 ```sql
 CREATE TABLE produto (
@@ -41,15 +41,15 @@ CREATE TABLE estoque (
 );
 ```
 
-## Coverage calculation
+## Cálculo de cobertura
 
-The business metric is:
+A métrica de negócio é:
 
 ```text
-Stock Coverage (days) = Current Stock / Average Daily Sales
+Cobertura de Estoque (dias) = Estoque Atual / Média Diária de Vendas
 ```
 
-A representative validation query is:
+Uma consulta representativa de validação é:
 
 ```sql
 SELECT
@@ -72,21 +72,21 @@ GROUP BY
     e.quantidade_atual;
 ```
 
-## Business classification
+## Classificação de negócio
 
-The demonstration thresholds are:
+Os limites utilizados na demonstração são:
 
-- **Healthy**: coverage > 7 days
-- **Attention**: coverage > 3 and <= 7 days
-- **Critical**: coverage <= 3 days
+- **Saudável**: cobertura > 7 dias
+- **Atenção**: cobertura > 3 e <= 7 dias
+- **Crítico**: cobertura <= 3 dias
 
-The thresholds are portfolio rules and can be parameterized according to a real company's replenishment policy.
+Os limites são regras de portfólio e podem ser parametrizados de acordo com a política de reposição de uma empresa real.
 
-## Why validate in SQL first?
+## Por que validar primeiro no SQL?
 
-Validating the calculation in MySQL before reproducing it in Qlik helps confirm that:
+Validar o cálculo no MySQL antes de reproduzi-lo no Qlik ajuda a confirmar que:
 
-- relationships between the tables are correct;
-- average daily sales are being calculated as expected;
-- stock coverage is mathematically consistent;
-- risk classification is based on a verified metric rather than only a visual expression.
+- os relacionamentos entre as tabelas estão corretos;
+- a média diária de vendas está sendo calculada como esperado;
+- a cobertura de estoque é matematicamente consistente;
+- a classificação de risco se baseia em uma métrica validada, e não apenas em uma expressão visual.
